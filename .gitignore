@@ -1,0 +1,23 @@
+# Dependencies and build output
+/node_modules
+/build
+/cache
+/dist
+
+# Model uploaded by the live-sync server
+/public/sync/*.stl
+/sync/
+
+# Image editor source files (kept locally only)
+*.afphoto
+
+# Local editor / tool settings
+.claude/settings.local.json
+.vscode/
+.idea/
+
+# Logs and OS files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db

@@ -1,0 +1,40 @@
+{
+  "name": "concaverayvision",
+  "version": "1.0.0",
+  "main": "index.html",
+  "private": true,
+  "type": "module",
+  "window": {
+    "title": "Concave Ray Vision",
+    "width": 900,
+    "height": 700
+  },
+  "scripts": {
+    "dev": "vite",
+    "server": "cd public && node ../src/server.js",
+    "build": "vite build && npm run build:server",
+    "build:server": "esbuild src/server.js --bundle --platform=node --target=node22 --format=cjs --external:bufferutil --external:utf-8-validate --outfile=dist/server.js",
+    "start": "npm run build && nw dist/",
+    "build:nw": "npm run build && nwbuild --platform win --arch x64 --outDir build --glob=false --app.icon=assets/icon.ico dist && node -e \"require('fs').copyFileSync('assets/credits.html', 'build/credits.html')\""
+  },
+  "dependencies": {
+    "express": "^5.3.0",
+    "express-fileupload": "^1.5.2",
+    "lil-gui": "^0.21.0",
+    "three": "^0.186.1",
+    "three-mesh-bvh": "^0.9.16",
+    "ws": "^8.22.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "nw": "^0.118.0",
+    "nw-builder": "^4.24.0",
+    "vite": "^8.3.4",
+    "vite-plugin-static-copy": "^4.1.1"
+  },
+  "overrides": {
+    "vite-plugin-static-copy": {
+      "chokidar": "^4.0.3"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+# Normalise line endings for text files
+* text=auto
+
+# Binary assets
+*.png binary
+*.ico binary
+*.glb binary
+*.hdr binary
+*.exr binary
+*.afphoto binary

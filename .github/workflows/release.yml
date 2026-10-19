@@ -1,0 +1,58 @@
+# Builds the Windows desktop app and publishes it as a GitHub release.
+# Trigger: push a tag matching the version in package.json, e.g.
+#   git tag v1.0.0 && git push origin v1.0.0
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Check tag matches package.json versions
+        shell: bash
+        run: |
+          version=$(node -p "require('./package.json').version")
+          manifest=$(node -p "require('./public/package.json').version")
+          if [ "${GITHUB_REF_NAME}" != "v${version}" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} does not match package.json version ${version} (expected v${version})"
+            exit 1
+          fi
+          if [ "${manifest}" != "${version}" ]; then
+            echo "::error::public/package.json version ${manifest} differs from package.json version ${version}"
+            exit 1
+          fi
+
+      - name: Cache NW.js binaries
+        uses: actions/cache@v4
+        with:
+          path: cache
+          key: nwjs-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - run: npm ci
+
+      - name: Build desktop app
+        run: npm run build:nw
+
+      - name: Package
+        shell: bash
+        run: 7z a -tzip "ConcaveRayVision-${GITHUB_REF_NAME}-win-x64.zip" ./build/*
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ConcaveRayVision-${{ github.ref_name }}-win-x64.zip
+          generate_release_notes: true

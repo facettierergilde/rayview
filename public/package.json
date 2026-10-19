@@ -1,0 +1,12 @@
+{
+  "name": "concaverayvision",
+  "version": "1.0.0",
+  "main": "index.html",
+  "node-main": "server.js",
+  "window": {
+    "title": "Concave Ray Vision",
+    "icon": "assets/icon.png",
+    "toolbar": true
+  },
+  "chromium-args": "--enable-features=UseOzonePlatform"
+}

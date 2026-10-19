@@ -1,0 +1,16 @@
+{
+    "studio_small_08_2k": {"isSkybox": true, "id": "./environments/1"},
+    "cayley_interior_4k": {"isSkybox": true, "id": "./environments/2"},
+    "Random": {"isSkybox": true, "id": "./environments/3"},
+    "ColorWalls": {"isSkybox": true, "id": "./environments/4"},
+    "Sky": {"isSkybox": true, "id": "./environments/5"},
+    "RedVsBlue": {"isSkybox": true, "id": "./environments/7"},
+    "RingsCube": {"isSkybox": true, "id": "./environments/8"},
+    "Cos": {"isSkybox": true, "id": "./environments/9"},
+    "Isometric": {"isSkybox": true, "id": "./environments/10"},
+    "Random HDR": {"isSkybox": false, "url": "./environments/hdri/randomhdr.hdr"},
+    "aerodynamics_workshop": {"isSkybox": false, "url": "./environments/hdri/aerodynamics_workshop_4k.hdr"},
+    "Rings Color": {"isSkybox": false, "url": "./environments/hdri/rings_small_full_color.hdr"},
+    "zwartkops_straight_afternoon": {"isSkybox": false, "url": "./environments/hdri/zwartkops_straight_afternoon_2k.hdr"},
+    "CheckColor": {"isSkybox": false, "url": "./environments/hdri/checkColor_hdri_texture.hdr"}
+}
