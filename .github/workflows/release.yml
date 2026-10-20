@@ -49,10 +49,10 @@ jobs:
 
       - name: Package
         shell: bash
-        run: 7z a -tzip "ConcaveRayVision-${GITHUB_REF_NAME}-win-x64.zip" ./build/*
+        run: 7z a -tzip "ConcaveRayView-${GITHUB_REF_NAME}-win-x64.zip" ./build/*
 
       - name: Publish release
         uses: softprops/action-gh-release@v2
         with:
-          files: ConcaveRayVision-${{ github.ref_name }}-win-x64.zip
+          files: ConcaveRayView-${{ github.ref_name }}-win-x64.zip
           generate_release_notes: true

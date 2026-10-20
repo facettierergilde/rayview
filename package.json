@@ -1,11 +1,11 @@
 {
-  "name": "concaverayvision",
+  "name": "concaverayview",
   "version": "1.0.0",
   "main": "index.html",
   "private": true,
   "type": "module",
   "window": {
-    "title": "Concave Ray Vision",
+    "title": "Concave Ray View",
     "width": 900,
     "height": 700
   },
